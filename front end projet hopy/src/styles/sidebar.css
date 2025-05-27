@@ -1,0 +1,126 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* Layout Structure */
+.layout-section {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar Styling */
+.sidebar-section {
+  width: 250px;
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+  height: 100vh;
+  flex-shrink: 0;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Sidebar Navigation */
+.sidebar-container ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.sidebar-container li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  color: #e0f2fe;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.sidebar-container li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.sidebar-container li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidebar-container li a.active {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Logout Section */
+.logout-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ffbdbd;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.logout-container:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff5c5c;
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar-section {
+    width: 70px;
+    padding: 1rem 0.5rem;
+  }
+
+  .sidebar-container li span,
+  .sidebar-container li a {
+    display: none;
+  }
+
+  .logout-container p {
+    display: none;
+  }
+}

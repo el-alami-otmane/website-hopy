@@ -1,0 +1,148 @@
+/* Appointments Page Styles */
+.appointments-container {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.appointments-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.appointments-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.appointments-header h1 {
+  font-size: 2.2rem;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+}
+
+.appointments-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Appointments Table */
+.appointments-table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointments-table th {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.appointments-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.appointments-table tr:hover {
+  background-color: #f5f9ff;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.completed {
+  background-color: #e6f7ee;
+  color: #00a854;
+}
+
+.status-badge.pending {
+  background-color: #fff7e6;
+  color: #fa8c16;
+}
+
+.status-badge.cancelled {
+  background-color: #fff1f0;
+  color: #f5222d;
+}
+
+/* Complete Button */
+.complete-btn {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.complete-btn:hover:not(.disabled) {
+  background-color: #0d5bba;
+  transform: translateY(-2px);
+}
+
+.complete-btn.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .appointments-main {
+    padding: 1rem;
+  }
+  
+  .appointments-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .appointments-table th,
+  .appointments-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointments-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .appointments-header p {
+    font-size: 1rem;
+  }
+  
+  .status-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .complete-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}

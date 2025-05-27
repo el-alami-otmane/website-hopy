@@ -1,0 +1,164 @@
+/* Notifications Page Styles */
+.notifications-container {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.notifications-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Styles */
+.notifications-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.bell-icon {
+  color: #1a73e8;
+}
+
+.notifications-header h1 {
+  font-size: 2.2rem;
+  color: #1a73e8;
+  margin: 0;
+}
+
+.notifications-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Notifications List */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notification-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.notification-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.notification-number {
+  background-color: #1a73e8;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.notification-text {
+  flex: 1;
+}
+
+.notification-message {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.notification-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.notification-date {
+  display: flex;
+  align-items: center;
+}
+
+.notification-time {
+  display: flex;
+  align-items: center;
+}
+
+.notification-date::before {
+  content: "📅";
+  margin-right: 0.3rem;
+}
+
+.notification-time::before {
+  content: "🕒";
+  margin-right: 0.3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .notifications-main {
+    padding: 1.5rem;
+  }
+  
+  .notifications-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .notification-content {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .notifications-main {
+    padding: 1rem;
+  }
+  
+  .notifications-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header-icon {
+    gap: 0.7rem;
+  }
+  
+  .bell-icon {
+    size: 24px;
+  }
+  
+  .notification-card {
+    padding: 1.2rem;
+  }
+  
+  .notification-meta {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}

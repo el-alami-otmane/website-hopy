@@ -1,0 +1,153 @@
+/* Apply Doctor Page Styles */
+.apply-doctor-container {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.apply-doctor-main {
+  flex: 1;
+}
+
+/* Hero Section */
+.apply-doctor-hero {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.apply-doctor-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.apply-doctor-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Application Section */
+.application-section {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.application-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.application-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.application-header h2 {
+  font-size: 2rem;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+}
+
+.application-header p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Application Form */
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-icon {
+  color: #1a73e8;
+}
+
+.form-group input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+}
+
+/* Submit Button */
+.submit-application {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.submit-application:hover {
+  background-color: #0d5bba;
+}
+
+.submit-application:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .apply-doctor-hero {
+    padding: 3rem 1rem;
+  }
+  
+  .apply-doctor-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .application-container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .application-container {
+    padding: 1.5rem;
+  }
+  
+  .application-header h2 {
+    font-size: 1.5rem;
+  }
+}

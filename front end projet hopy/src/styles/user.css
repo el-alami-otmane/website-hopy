@@ -1,0 +1,182 @@
+.user-section {
+  padding: 2rem;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.home-sub-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+/* Table Styles */
+.user-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.user-container thead {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+}
+
+.user-container th,
+.user-container td {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.user-container tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.3s ease;
+}
+
+.user-table-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Styles */
+.user-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  background-color: #1a73e8;
+}
+
+.user-btn:hover {
+  background-color: #0d47a1;
+}
+
+.user-btn:last-child {
+  background-color: #ef4444;
+}
+
+.user-btn:last-child:hover {
+  background-color: #b91c1c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-container table {
+    font-size: 0.85rem;
+  }
+
+  .user-table-pic {
+    width: 30px;
+    height: 30px;
+  }
+
+  .user-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+.appointment-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.appointment-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.appointment-container th,
+.appointment-container td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.appointment-container thead {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.appointment-container tr:hover {
+  background-color: #f9fafb;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn {
+  background-color: #64748b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #475569;
+}
+
+.home-sub-heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+/* Status badge coloring */
+.appointment-container td:last-child {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.appointment-container td:last-child::before {
+  content: "● ";
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.appointment-container td:last-child:contains("pending") {
+  color: #f59e0b;
+}
+
+.appointment-container td:last-child:contains("approved") {
+  color: #10b981;
+}
+
+.appointment-container td:last-child:contains("rejected") {
+  color: #ef4444;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .appointment-container table {
+    font-size: 0.85rem;
+  }
+
+  .home-sub-heading {
+    font-size: 1.3rem;
+  }
+
+  .back-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

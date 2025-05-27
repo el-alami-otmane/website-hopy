@@ -1,0 +1,263 @@
+/* Doctors Page Container */
+.doctors-container {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.doctors-main {
+  flex: 1;
+  padding: 2rem 0;
+  background-color: #f8f9fa;
+}
+
+/* Doctors Section */
+.doctors-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* Filter Controls */
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.specialization-filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.specialization-filter label {
+  font-weight: 600;
+  color: #555;
+}
+
+.specialization-select {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 1rem;
+  background-color: white;
+  min-width: 250px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.specialization-select:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Doctors Grid */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 0;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .specialization-filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .doctors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.user-section {
+  padding: 2rem;
+  width: 100%;
+  overflow-x: auto;
+  background-color: #f8fafc;
+}
+
+.home-sub-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.specialization-filter select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.specialization-filter select:focus {
+  border-color: #1a73e8;
+}
+
+.user-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.user-container thead {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+  color: white;
+}
+
+.user-container th,
+.user-container td {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.user-container tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.3s ease;
+}
+
+.user-table-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  margin: 0.2rem;
+}
+
+.user-btn {
+  background-color: #1a73e8;
+}
+
+.user-btn:hover {
+  background-color: #0d47a1;
+}
+
+.btn-success {
+  background-color: #10b981;
+}
+
+.btn-success:hover {
+  background-color: #047857;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.status-badge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.available {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.unavailable {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-container table {
+    font-size: 0.85rem;
+  }
+
+  .user-table-pic {
+    width: 30px;
+    height: 30px;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .filter-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
