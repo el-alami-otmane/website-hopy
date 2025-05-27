@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../styles/register.css";
+import "../styles/santer-auth.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../redux/reducers/rootSlice";
 import jwt_decode from "jwt-decode";
 import fetchData from "../helper/apiCall";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
 
@@ -16,7 +17,37 @@ function Login() {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Create floating particles
+    const particles = document.querySelector('.santer-auth-bg');
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('santer-particle');
+      
+      // Random properties
+      const size = Math.random() * 10 + 5;
+      const posX = Math.random() * 100;
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.4 + 0.2;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}%`;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
+      particle.style.opacity = opacity;
+      
+      particles.appendChild(particle);
+    }
+    
+    return () => {
+      document.querySelectorAll('.santer-particle').forEach(el => el.remove());
+    };
+  }, []);
 
   const inputChange = (e) => {
     const { name, value } = e.target;
@@ -29,11 +60,14 @@ function Login() {
   const formSubmit = async (e) => {
     try {
       e.preventDefault();
+      setLoading(true);
       const { email, password } = formDetails;
       if (!email || !password) {
-        return toast.error("Input field should not be empty");
+        setLoading(false);
+        return toast.error("Please fill in all fields");
       } else if (password.length < 5) {
-        return toast.error("Password must be at least 5 characters long");
+        setLoading(false);
+        return toast.error("Password must be at least 5 characters");
       }
 
       const { data } = await toast.promise(
@@ -42,16 +76,18 @@ function Login() {
           password,
         }),
         {
-          pending: "Logging in...",
-          success: "Login successfully",
-          error: "Unable to login user",
-          loading: "Logging user...",
+          pending: "Authenticating...",
+          success: "Welcome back!",
+          error: "Invalid credentials",
+          loading: "Authenticating...",
         }
       );
       localStorage.setItem("token", data.token);
       dispatch(setUserInfo(jwt_decode(data.token).userId));
       getUser(jwt_decode(data.token).userId);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       return error;
     }
   };
@@ -67,47 +103,56 @@ function Login() {
   };
 
   return (
-    <section className="register-section flex-center">
-      <div className="register-container flex-center">
-        <h2 className="form-heading">Sign In</h2>
-        <form
-          onSubmit={formSubmit}
-          className="register-form"
-        >
-          <input
-            type="email"
-            name="email"
-            className="form-input"
-            placeholder="Enter your email"
-            value={formDetails.email}
-            onChange={inputChange}
-          />
-          <input
-            type="password"
-            name="password"
-            className="form-input"
-            placeholder="Enter your password"
-            value={formDetails.password}
-            onChange={inputChange}
-          />
+    <div className="santer-auth-bg">
+      <div className="santer-auth-container">
+        <h1 className="santer-auth-heading">Welcome Back</h1>
+        <form onSubmit={formSubmit} className="santer-auth-form">
+          <div className="santer-auth-input-group">
+            <FaEnvelope className="santer-auth-icon" />
+            <input
+              type="email"
+              name="email"
+              className="santer-auth-input"
+              placeholder="Email address"
+              value={formDetails.email}
+              onChange={inputChange}
+            />
+          </div>
+          
+          <div className="santer-auth-input-group">
+            <FaLock className="santer-auth-icon" />
+            <input
+              type="password"
+              name="password"
+              className="santer-auth-input"
+              placeholder="Password"
+              value={formDetails.password}
+              onChange={inputChange}
+            />
+          </div>
+          
           <button
             type="submit"
-            className="btn form-btn"
+            className="santer-auth-btn"
+            disabled={loading}
           >
-            sign in
+            {loading ? (
+              <>
+                <span className="santer-loading"></span>
+                Signing In...
+              </>
+            ) : "Sign In"}
           </button>
         </form>
-        <p>
-          Not a user?{" "}
-          <NavLink
-            className="login-link"
-            to={"/register"}
-          >
-            Register
+        
+        <p className="santer-auth-toggle">
+          New to Santer?{" "}
+          <NavLink to="/register" className="santer-auth-link">
+            Create Account
           </NavLink>
         </p>
       </div>
-    </section>
+    </div>
   );
 }
 
