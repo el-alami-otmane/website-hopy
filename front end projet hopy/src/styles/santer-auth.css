@@ -1,0 +1,297 @@
+/* Santer Exclusive Auth Styles */
+.santer-auth-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.santer-auth-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.santer-auth-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.santer-auth-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.santer-auth-heading {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.santer-auth-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+  border-radius: 2px;
+}
+
+.santer-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.santer-auth-input-group {
+  position: relative;
+}
+
+.santer-auth-input {
+  width: 100%;
+  padding: 1.2rem 1.5rem 1.2rem 3rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  color: #333;
+}
+
+.santer-auth-input:focus {
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.santer-auth-input::placeholder {
+  color: #aaa;
+}
+
+.santer-auth-icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #667eea;
+  font-size: 1.2rem;
+}
+
+.santer-auth-btn {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.santer-auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.santer-auth-btn:active {
+  transform: translateY(0);
+}
+
+.santer-auth-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.santer-auth-btn:hover::before {
+  left: 100%;
+}
+
+.santer-auth-toggle {
+  text-align: center;
+  margin-top: 2rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+}
+
+.santer-auth-link {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.santer-auth-link:hover {
+  color: #fad0c4;
+}
+
+.santer-auth-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fad0c4;
+  transition: all 0.3s ease;
+}
+
+.santer-auth-link:hover::after {
+  width: 100%;
+}
+
+/* File Upload Styles */
+.santer-file-upload {
+  display: none;
+}
+
+.santer-file-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.santer-file-label:hover {
+  background: white;
+}
+
+.santer-file-text {
+  color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  padding-right: 1rem;
+}
+
+.santer-file-btn {
+  background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Loading Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.santer-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .santer-auth-container {
+    padding: 1.8rem;
+  }
+  
+  .santer-auth-heading {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .santer-auth-input {
+    padding: 1rem 1.2rem 1rem 2.8rem;
+  }
+  
+  .santer-auth-icon {
+    left: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Floating Particles */
+.santer-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: float linear infinite;
+  z-index: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-100vh) rotate(360deg); }
+}
