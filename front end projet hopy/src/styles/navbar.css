@@ -1,61 +1,157 @@
-/* Scoped to home-container */
- header {
-  background-color: white;
+/* Navbar.css - Scoped to .nav-container only */
+.nav-container header {
+  background-color: #ffffff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  width: 100%;
 }
 
- nav {
+.nav-container nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
- .nav-logo a {
-  color: #1a73e8;
+.nav-container .nav-logo a {
+  color: #2c3e50;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
- .nav-links {
+.nav-container .nav-logo a:hover {
+  color: #3498db;
+}
+
+.nav-container .nav-links {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  align-items: center;
 }
 
- .nav-links a {
-  color: #333;
+.nav-container .nav-links a {
+  color: #34495e;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
- .nav-links a:hover {
-  color: #1a73e8;
+.nav-container .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease;
 }
 
- .btn {
-  background-color: #1a73e8;
+.nav-container .nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-container .nav-links a:hover {
+  color: #3498db;
+}
+
+.nav-container .btn {
+  background-color: #3498db;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
 }
 
- .btn:hover {
-  background-color: #0d5bba;
+.nav-container .btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container .menu-icons {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-container .menu-open,
+.nav-container .menu-close {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.nav-container .menu-open:hover,
+.nav-container .menu-close:hover {
+  color: #3498db;
+}
+
+/* Active link styling */
+.nav-container .nav-links a.active {
+  color: #3498db;
+  font-weight: 600;
+}
+
+.nav-container .nav-links a.active::after {
+  width: 100%;
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
-   .nav-links {
-    position: fixed;
-    /* ... existing mobile styles ... */
+  .nav-container nav {
+    padding: 1rem;
   }
+  
+  .nav-container .menu-icons {
+    display: block;
+    z-index: 1001;
+  }
+  
+  .nav-container .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-container .nav-active .nav-links {
+    right: 0;
+  }
+  
+  .nav-container .nav-links a {
+    font-size: 1.1rem;
+  }
+}
+
+/* Notification badge styling */
+.nav-container .notification-badge {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
 }
