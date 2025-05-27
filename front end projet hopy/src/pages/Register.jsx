@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../styles/register.css";
+import "../styles/santer-auth.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { FaUser, FaEnvelope, FaLock, FaImage } from "react-icons/fa";
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
 
 function Register() {
   const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("Choose profile image");
   const [loading, setLoading] = useState(false);
   const [formDetails, setFormDetails] = useState({
     firstname: "",
@@ -17,6 +19,35 @@ function Register() {
     confpassword: "",
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Create floating particles
+    const particles = document.querySelector('.santer-auth-bg');
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('santer-particle');
+      
+      // Random properties
+      const size = Math.random() * 10 + 5;
+      const posX = Math.random() * 100;
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.4 + 0.2;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}%`;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
+      particle.style.opacity = opacity;
+      
+      particles.appendChild(particle);
+    }
+    
+    return () => {
+      document.querySelectorAll('.santer-particle').forEach(el => el.remove());
+    };
+  }, []);
 
   const inputChange = (e) => {
     const { name, value } = e.target;
@@ -38,11 +69,15 @@ function Register() {
         body: data,
       })
         .then((res) => res.json())
-        .then((data) => setFile(data.url.toString()));
+        .then((data) => {
+          setFile(data.url.toString());
+          setFileName(element.name);
+          toast.success("Profile image uploaded successfully");
+        });
       setLoading(false);
     } else {
       setLoading(false);
-      toast.error("Please select an image in jpeg or png format");
+      toast.error("Please select an image in JPEG or PNG format");
     }
   };
 
@@ -51,22 +86,25 @@ function Register() {
       e.preventDefault();
 
       if (loading) return;
-      if (file === "") return;
+      if (file === "") {
+        return toast.error("Please upload a profile picture");
+      }
 
       const { firstname, lastname, email, password, confpassword } =
         formDetails;
       if (!firstname || !lastname || !email || !password || !confpassword) {
-        return toast.error("Input field should not be empty");
+        return toast.error("All fields are required");
       } else if (firstname.length < 3) {
-        return toast.error("First name must be at least 3 characters long");
+        return toast.error("First name must be at least 3 characters");
       } else if (lastname.length < 3) {
-        return toast.error("Last name must be at least 3 characters long");
+        return toast.error("Last name must be at least 3 characters");
       } else if (password.length < 5) {
-        return toast.error("Password must be at least 5 characters long");
+        return toast.error("Password must be at least 5 characters");
       } else if (password !== confpassword) {
         return toast.error("Passwords do not match");
       }
 
+      setLoading(true);
       await toast.promise(
         axios.post("/user/register", {
           firstname,
@@ -76,90 +114,120 @@ function Register() {
           pic: file,
         }),
         {
-          pending: "Registering user...",
-          success: "User registered successfully",
-          error: "Unable to register user",
-          loading: "Registering user...",
+          pending: "Creating your account...",
+          success: "Account created successfully!",
+          error: "Registration failed",
+          loading: "Creating your account...",
         }
       );
+      setLoading(false);
       return navigate("/login");
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
-    <section className="register-section flex-center">
-      <div className="register-container flex-center">
-        <h2 className="form-heading">Sign Up</h2>
-        <form
-          onSubmit={formSubmit}
-          className="register-form"
-        >
-          <input
-            type="text"
-            name="firstname"
-            className="form-input"
-            placeholder="Enter your first name"
-            value={formDetails.firstname}
-            onChange={inputChange}
-          />
-          <input
-            type="text"
-            name="lastname"
-            className="form-input"
-            placeholder="Enter your last name"
-            value={formDetails.lastname}
-            onChange={inputChange}
-          />
-          <input
-            type="email"
-            name="email"
-            className="form-input"
-            placeholder="Enter your email"
-            value={formDetails.email}
-            onChange={inputChange}
-          />
+    <div className="santer-auth-bg">
+      <div className="santer-auth-container">
+        <h1 className="santer-auth-heading">Join Santer</h1>
+        <form onSubmit={formSubmit} className="santer-auth-form">
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <div className="santer-auth-input-group" style={{ flex: 1 }}>
+              <FaUser className="santer-auth-icon" />
+              <input
+                type="text"
+                name="firstname"
+                className="santer-auth-input"
+                placeholder="First name"
+                value={formDetails.firstname}
+                onChange={inputChange}
+              />
+            </div>
+            <div className="santer-auth-input-group" style={{ flex: 1 }}>
+              <FaUser className="santer-auth-icon" />
+              <input
+                type="text"
+                name="lastname"
+                className="santer-auth-input"
+                placeholder="Last name"
+                value={formDetails.lastname}
+                onChange={inputChange}
+              />
+            </div>
+          </div>
+          
+          <div className="santer-auth-input-group">
+            <FaEnvelope className="santer-auth-icon" />
+            <input
+              type="email"
+              name="email"
+              className="santer-auth-input"
+              placeholder="Email address"
+              value={formDetails.email}
+              onChange={inputChange}
+            />
+          </div>
+          
           <input
             type="file"
             onChange={(e) => onUpload(e.target.files[0])}
-            name="profile-pic"
-            id="profile-pic"
-            className="form-input"
+            id="santer-file-upload"
+            className="santer-file-upload"
+            accept="image/jpeg, image/png"
           />
-          <input
-            type="password"
-            name="password"
-            className="form-input"
-            placeholder="Enter your password"
-            value={formDetails.password}
-            onChange={inputChange}
-          />
-          <input
-            type="password"
-            name="confpassword"
-            className="form-input"
-            placeholder="Confirm your password"
-            value={formDetails.confpassword}
-            onChange={inputChange}
-          />
+          <label htmlFor="santer-file-upload" className="santer-file-label">
+            <FaImage style={{ marginRight: '10px', color: '#667eea' }} />
+            <span className="santer-file-text">{fileName}</span>
+            <span className="santer-file-btn">Browse</span>
+          </label>
+          
+          <div className="santer-auth-input-group">
+            <FaLock className="santer-auth-icon" />
+            <input
+              type="password"
+              name="password"
+              className="santer-auth-input"
+              placeholder="Password"
+              value={formDetails.password}
+              onChange={inputChange}
+            />
+          </div>
+          
+          <div className="santer-auth-input-group">
+            <FaLock className="santer-auth-icon" />
+            <input
+              type="password"
+              name="confpassword"
+              className="santer-auth-input"
+              placeholder="Confirm password"
+              value={formDetails.confpassword}
+              onChange={inputChange}
+            />
+          </div>
+          
           <button
             type="submit"
-            className="btn form-btn"
-            disabled={loading ? true : false}
+            className="santer-auth-btn"
+            disabled={loading}
           >
-            sign up
+            {loading ? (
+              <>
+                <span className="santer-loading"></span>
+                Creating Account...
+              </>
+            ) : "Sign Up"}
           </button>
         </form>
-        <p>
-          Already a user?{" "}
-          <NavLink
-            className="login-link"
-            to={"/login"}
-          >
-            Log in
+        
+        <p className="santer-auth-toggle">
+          Already have an account?{" "}
+          <NavLink to="/login" className="santer-auth-link">
+            Sign In
           </NavLink>
         </p>
       </div>
-    </section>
+    </div>
   );
 }
 
